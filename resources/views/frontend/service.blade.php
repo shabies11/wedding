@@ -23,14 +23,14 @@
 				<div class="Services-col  invitation">
 					<i class="fas fa-book-open"></i>
 					<h2>Invitations</h2>
-					<p>kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p>Making Your Special Day Unforgettable</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="Services-col  photography">
 					<i class="fas fa-camera"></i>
 					<h2>Photography & Video</h2>
-					<p> iss mn bhi kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p> Capturing Moments, Creating Memories</p>
 					<div class="taskeen"></div>
 				</div>
 			</div>
@@ -38,28 +38,28 @@
 				<div class="Services-col  decoration">
 					<i class="fas fa-tree"></i>
 					<h2>Stage Decoration</h2>
-					<p>kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p>Enchanting Stage Decorations For Your Perfect Day</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="Services-col  wedding">
 					<i class="fas fa-birthday-cake"></i>
 					<h2>Wedding Cake</h2>
-					<p>kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p>Your Dream Cake, Our Masterpiece</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="Services-col  music_band">
 					<i class="fas fa-music"></i>
 					<h2>Music & Band</h2>
-					<p>kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p>Tunes That Touch Hearts</p>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="Services-col  waiter_service">
 					<i class="fas fa-table "></i>
 					<h2>Waiter Service</h2>
-					<p>kuch bhi likh lein gy bad mn discuss kr k</p>
+					<p>Serving You With Grace And Style</p>
 				</div>
 			</div>
 		</div>

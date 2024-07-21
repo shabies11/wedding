@@ -207,6 +207,7 @@ span {
 #Service p{
     font-size: 16px !important;
     font-weight: 700;
+    color: var(--clr2);
 }
 .Services-row {
   display: flex;

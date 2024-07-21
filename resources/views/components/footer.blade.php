@@ -13,6 +13,7 @@
           <i class="fab fa-linkedin"></i>
           <i class="fab fa-twitter"></i>
           <i class="fab fa-pinterest"></i>
+          <i class="fab fa-whatsapp"></i>
         </div>
       </div>
       <div class="f-container">

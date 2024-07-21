@@ -18,8 +18,7 @@
             <div class="contact-info">
                 <h3 class="tittle">Let's get in touch</h3>
                 <p class="text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                    dolorum adipisci recusandae praesentium dicta!
+                   We can't wait to meet you! Drop us a message, and we'll get back to you as soon as possible. Let’s create beautiful memories together
                 </p>
 
                 <div class="info">
@@ -30,7 +29,7 @@
                     </div>
                     <div class="information">
                         <i class="fas fa-envelope"></i> &nbsp &nbsp
-                        <p>lorem@ipsum.com</p>
+                        <p>ishkeen_wedding_planners@gmail.com</p>
                     </div>
                     <div class="information">
                         <i class="fas fa-phone"></i>&nbsp&nbsp
@@ -52,6 +51,9 @@
                         </a>
                         <a href="#">
                             <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
                 </div>
