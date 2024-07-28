@@ -26,7 +26,7 @@
                 font-size: 16px;
                 font-weight: 600;
             }
-            img{
+           .details img{
                 width:100%;
                 height: 350px !important;
                 object-fit: cover;
@@ -59,7 +59,7 @@
 		</form>
 
 	</section>
-    <div class="container detail-container d-flex flex-column align-items-center justify-content-center">
+    <div class="container detail-container d-flex flex-column align-items-center justify-content-center details">
 
         <h1 class="city">{{ $item->city }}</h1>
         <p class="tagline">{{ $item->tagline }}</p>
