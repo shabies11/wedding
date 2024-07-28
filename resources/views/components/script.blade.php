@@ -24,7 +24,7 @@
                         <script type="text/javascript">
                             $(document).ready(function () {
 
-                                $('.venue-list').slick({
+                                $('#venue-list').slick({
                                     dots: true,
                                     infinite: true,
                                     speed: 300,

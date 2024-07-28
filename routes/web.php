@@ -35,11 +35,14 @@ use App\Http\Controllers\FrontendController;
 |
 */
 Route::get('/', [FrontendController::class,"index"])->name('frontend.home');
+
 Route::get('/invitation', [FrontendController::class,"invitation"])->name('frontend.invitation');
 Route::get('/service', [FrontendController::class,"service"])->name('frontend.service');
+Route::get('/more-info/{id?}', [FrontendController::class,"more_info"])->name('frontend.more-info');
 Route::get('/vendor', [FrontendController::class,"vendor"])->name('frontend.vendor');
 Route::get('/venue', [FrontendController::class,"venue"])->name('frontend.venue');
 Route::get('/contactus', [FrontendController::class,"contactus"])->name('frontend.contactus');
+Route::POST('/contact-us', [FrontendController::class,"contactusForm"])->name('frontend.contact.data');
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

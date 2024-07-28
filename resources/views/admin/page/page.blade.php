@@ -44,7 +44,7 @@
                     }
                 },
                 columns: [
-                    { data: "title" },
+                    { data: "city" },
                     { data: "slug" },
                     { data: "actions" }
                 ],

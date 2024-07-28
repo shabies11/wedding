@@ -4,7 +4,7 @@
         <div class="col-md-6">
             <div class="users">
                 <ul>
-                    <li><a href="javascript:;">{{ Auth::user()->name }}</a>
+                    <li><a href="javascript:;">ISHKEEN</a>
                         <!-- sub-user -->
                         <div class="sub-user">
                             <ul>

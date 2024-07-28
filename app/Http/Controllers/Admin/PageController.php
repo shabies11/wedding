@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Page;
 use Illuminate\Support\Facades\Validator;
-
+use Illuminate\Support\Str;
 class PageController extends Controller {
     /**
      * Display a listing of the resource.
@@ -42,13 +42,13 @@ class PageController extends Controller {
             $searchStrings = explode(' ', $request->search['value']);
             foreach($searchStrings as $searchString) {
                 $query->where(function ($query) use ($searchString) {
-                    $query->orWhere('title', 'like', '%' . $searchString . '%');
+                    $query->orWhere('city', 'like', '%' . $searchString . '%');
                     $query->orWhere('slug', 'like', '%' . $searchString . '%');
                 });
             }
         }
         if($request->order) {
-            $orderableColumns = array('title', 'slug', '');
+            $orderableColumns = array('city', 'slug', '');
             $query->orderBy($orderableColumns[$request->order['0']['column']], $request->order['0']['dir']);
         }else {
             $query->orderBy('id', 'DESC');
@@ -61,7 +61,7 @@ class PageController extends Controller {
             $page->actions = '<a class="edit_page" href="'.route('admin.page.edit', ['id' => $page->id]).'">
                         <img src="'.asset('img/edit-solid.svg').'" alt="edit icon">
                     </a>';
-            if($page->id > 5) {
+
                 $page->actions .= '<a class="deleteprocess" data-type="page" data-id="'.$page->id.'" href="javascript:;">
                         <img src="'.asset('img/trash-solid.svg').'" alt="delete icon">
                     </a>
@@ -69,7 +69,7 @@ class PageController extends Controller {
                       <input type="hidden" name="_token" value="'.csrf_token().'">
                       <input type="hidden" name="_method" value="DELETE">
                     </form>';
-            }
+            
         }
         $data = [
             'draw' => $input['draw'],
@@ -119,7 +119,9 @@ class PageController extends Controller {
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
+            'city' => 'required|max:255',
+            'vendor' => 'required|max:255',
+            'tagline' => 'required|max:255',
             'description' => 'required',
             'featured_image' => 'required|file|mimes:jpg,jpeg,png|max:5120',
             'meta_title' => 'required|max:255',
@@ -142,7 +144,10 @@ class PageController extends Controller {
             }
         }
         $page = new Page;
-        $page->title = $request->title;
+        $page->city = $request->city;
+        $page->vendor = $request->vendor;
+        $page->slug = Str::slug($request->city);;
+        $page->tagline = $request->tagline;
         $page->featured_image = $featuredImage;
         $page->description = $request->description;
         $page->meta_title = $request->meta_title;
@@ -206,7 +211,9 @@ class PageController extends Controller {
     {
         $page = Page::findOrFail($id);
         $validator = Validator::make($request->all(), [
-            'title' => 'required|max:255',
+            'city' => 'required|max:255',
+            'vendor' => 'required|max:255',
+            'tagline' => 'required|max:255',
             'description' => 'required',
             'featured_image' => 'file|mimes:jpg,jpeg,png|max:5120',
             'meta_title' => 'required|max:255',
@@ -229,9 +236,11 @@ class PageController extends Controller {
                 return Redirect()->route("admin.page.update", ['id' =>$id])->with('error', 'Featured image is not valid');
             }
         }
-        if($id > 5) {
-            $page->title = $request->title;
-        }
+
+            $page->city = $request->city;
+            $page->vendor = $request->vendor;
+            $page->tagline = $request->tagline;
+
         $page->description = $request->description;
         $page->meta_title = $request->meta_title;
         $page->meta_description = $request->meta_description;

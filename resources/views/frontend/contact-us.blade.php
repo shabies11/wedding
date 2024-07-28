@@ -18,7 +18,8 @@
             <div class="contact-info">
                 <h3 class="tittle">Let's get in touch</h3>
                 <p class="text">
-                   We can't wait to meet you! Drop us a message, and we'll get back to you as soon as possible. Let’s create beautiful memories together
+                    We can't wait to meet you! Drop us a message, and we'll get back to you as soon as possible. Let’s
+                    create beautiful memories together
                 </p>
 
                 <div class="info">
@@ -62,28 +63,49 @@
             <div class="contact-form">
                 <span class="circle one"></span>
                 <span class="circle two"></span>
+                @if (session('success'))
+                    <script>
+                        Swal.fire({
+                             
+                            title: 'Success!',
+                            text: '{{ session('success') }}',
+                            confirmButtonText: 'OK'
+                        });
+                    </script>
+                @endif
 
-                <form action="index.html" autocomplete="off" id="contact-input">
-                    <h3 class="title" >Contact us</h3>
-                    <div class="input-container" >
-                        <input type="text" name="name" class="input" />
-                        <label for="">Username</label>
-                        <span>Username</span>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <form action="{{ route('frontend.contact.data') }}" autocomplete="off" method="POST" id="contact-input">
+                    @csrf
+                    <h3 class="title">Contact us</h3>
+                    <div class="input-container">
+                        <input type="text" name="name" class="input" placeholder="Full Name" value="{{ old('name') }}" />
+
+
                     </div>
                     <div class="input-container">
-                        <input type="email" name="email" class="input" />
-                        <label for="">Email</label>
-                        <span>Email</span>
+                        <input type="email" name="email" class="input" placeholder="Email" value="{{ old('email') }}" />
+
+
                     </div>
                     <div class="input-container">
-                        <input type="tel" name="phone" class="input" />
-                        <label for="">Phone</label>
-                        <span>Phone</span>
+                        <input type="tel" name="phone" class="input" placeholder="Phone No." value="{{ old('phone') }}" />
+
+
                     </div>
                     <div class="input-container textarea">
-                        <textarea name="message" class="input"></textarea>
-                        <label for="">Message</label>
-                        <span>Message</span>
+                        <textarea name="message" class="input" placeholder="Message">{{ old('message') }}</textarea>
+
+
                     </div>
                     <input type="submit" value="Send" class="btn" />
                 </form>

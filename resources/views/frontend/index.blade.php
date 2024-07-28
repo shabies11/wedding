@@ -2,26 +2,26 @@
 
 	<!---home section--->
 	<section id="Home" class="Home" Home>
-		<form action="#">
+		<form >
 			<div class="search-box">
 				<h1>Make Your Dreamy Wedding With ISHKEEN </h1>
 				<p>Find Us The Best Wedding Vendors With Thousands Of Trusted Reviews</p>
-				<select type="text" class="search-field">
-					<option disabled selected>Select Vendor Type</option>
-					<option value="Wedding Venues">Wedding Venues</option>
-					<option value="Catering">Catering</option>
-					<option value="Decoration">Decoation</option>
-					<option value="Bridal Entry">Bridal Entry</option>
-					<option value="Groom Entry">Groom Entry</option>
+				<select type="text" name="vendor" class="search-field">
+                    <option disabled selected>Select Vendor Type</option>
+                    <option value="Wedding Venues" {{ app('request')->input('vendor') == 'Wedding Venues' ? 'selected' : '' }}>Wedding Venues</option>
+                    <option value="Catering" {{ app('request')->input('vendor') == 'Catering' ? 'selected' : '' }}>Catering</option>
+                    <option value="Decoration" {{ app('request')->input('vendor') == 'Decoration' ? 'selected' : '' }}>Decoration</option>
+                    <option value="Bridal Entry" {{ app('request')->input('vendor') == 'Bridal Entry' ? 'selected' : '' }}>Bridal Entry</option>
+                    <option value="Groom Entry" {{ app('request')->input('vendor') == 'Groom Entry' ? 'selected' : '' }}>Groom Entry</option>
 				</select>
-				<select type="text" class="search-field">
-					<option disabled selected>Select City</option>
-					<option value="Islamabad">Islamabad</option>
-					<option value="Mandi Baha Uddin">Mandi Baha Uddin</option>
-					<option value="Jhelum">Jhelum</option>
-					<option value="Faisalabad">Faisalabad</option>
-					<option value="Lahore">Lahore</option>
-					<option value="karachi">Karachi</option>
+				<select type="text" name="city" class="search-field">
+                    <option disabled selected>Select City</option>
+                    <option value="Islamabad" {{ app('request')->input('city') == 'Islamabad' ? 'selected' : '' }}>Islamabad</option>
+                    <option value="Mandi Baha Uddin" {{ app('request')->input('city') == 'Mandi Baha Uddin' ? 'selected' : '' }}>Mandi Baha Uddin</option>
+                    <option value="Jhelum" {{ app('request')->input('city') == 'Jhelum' ? 'selected' : '' }}>Jhelum</option>
+                    <option value="Faisalabad" {{ app('request')->input('city') == 'Faisalabad' ? 'selected' : '' }}>Faisalabad</option>
+                    <option value="Lahore" {{ app('request')->input('city') == 'Lahore' ? 'selected' : '' }}>Lahore</option>
+                    <option value="Karachi" {{ app('request')->input('city') == 'Karachi' ? 'selected' : '' }}>Karachi</option>
 				</select>
 				<button class="site_btn">SEARCH</button>
 			</div>
@@ -135,20 +135,24 @@
 	</section>
 
 	<!----------------------------venue Section-------------->
+    @if(isset($venues) && $venues->count() > 0)
 	<section class="venue" id="venue">
 		<div class="title">
 			<h1><span>V</span>enues</h1>
 		</div>
-		<div class="venue-list">
-			<div class="venue-box">
-				<img src="asset/img/lahore.jpg" alt="img">
+		<div class="venue-list" id="venue-list">
+
+            @foreach ($venues as $venue)
+            <div class="venue-box">
+				<img src="{{$venue->featured_image}}" alt="img">
 				<div class="venue-info">
-					<h2>Lahore</h2>
-					<p>Prime Banquet Hal</p>
-					<button class="btn">More Info</button>
+					<h2>{{$venue->city}}</h2>
+					<p>{{$venue->tagline}}</p>
+					<a href="{{route('frontend.more-info',$venue->id)}}" class="btn">More Info</a>
 				</div>
 			</div>
-			<div class="venue-box">
+            @endforeach
+			{{-- <div class="venue-box">
 				<img src="asset/img/jhelum.jpg" alt="img">
 				<div class="venue-info">
 					<h2>Jhelum</h2>
@@ -187,9 +191,11 @@
 					<p>Zam Zam Macca Banquet · Casamento</p>
 					<button class="btn">More Info</button>
 				</div>
-			</div>
+			</div> --}}
 		</div>
 	</section>
+
+    @endif
 	<!------------------E-invitation------------------>
 	<!-- cards starts -->
   <section class="Service" id="Service">
