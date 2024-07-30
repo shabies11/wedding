@@ -69,7 +69,7 @@ class PageController extends Controller {
                       <input type="hidden" name="_token" value="'.csrf_token().'">
                       <input type="hidden" name="_method" value="DELETE">
                     </form>';
-            
+
         }
         $data = [
             'draw' => $input['draw'],
@@ -146,7 +146,7 @@ class PageController extends Controller {
         $page = new Page;
         $page->city = $request->city;
         $page->vendor = $request->vendor;
-        $page->slug = Str::slug($request->city);;
+        $page->slug = Str::slug($request->city) . '-' . Str::random(6);
         $page->tagline = $request->tagline;
         $page->featured_image = $featuredImage;
         $page->description = $request->description;
